@@ -1,0 +1,14 @@
+<h1>Login</h1>
+
+<div>
+    <label for="">Email/Username</label>
+    <input [(ngModel)]="email">
+</div>
+<app-password [seePassword]="false" [breakLineOnInput]="true" (valueChanged)="passwordChanged($event)" />
+<div>
+    <button mat-flat-button color="primary" (click)="login()">Logar</button>
+    <div>
+        <span>Não possui conta? <a routerLink="newaccount">Crie uma agora mesmo!</a></span>
+        <span><a href="{{'/recover' + email}}">Recuperar senha</a></span>
+    </div>
+</div>
