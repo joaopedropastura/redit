@@ -15,6 +15,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgFor, AsyncPipe} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
+import { NewAccountPageComponent } from './new-account-page/new-account-page.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MatInputModule} from '@angular/material/input';
     AppComponent,
     LoginPageComponent,
     NavComponent,
-    PasswordComponent
+    PasswordComponent,
+    NewAccountPageComponent
   ],
   imports: [
     FeedPageComponent,

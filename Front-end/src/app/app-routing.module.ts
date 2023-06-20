@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedPageComponent } from './feed-page/feed-page.component';
+import { NewAccountPageComponent } from './new-account-page/new-account-page.component';
 
 const routes: Routes = [
   { path: "login", component: LoginPageComponent },
-  { path: "feed", component: FeedPageComponent }
+  { path: "feed", component: FeedPageComponent },
+  { path: "new-account", component : NewAccountPageComponent}
 ];
 
 @NgModule({
