@@ -22,3 +22,19 @@ RNF02 - O sistema não pode ser muito inseguro.
 RNF03 - O sistema deve usar Angular :(, C# :) e Sql :|.
 RNF04 - O sistema não deve ser lento demais.
 RNF05 - Deve ter um nome criativo e red pill.
+
+
+
+create database redeSocial
+
+
+create table UserTable
+(
+	id int identity(1,1) primary key,
+	Name varchar(100) not null,
+	cpf varchar(11) not null,
+	UserName varchar(25) not null,
+	BornDate date,
+	AssignDate DATE NOT NULL DEFAULT GETDATE(),
+	password varchar(100) not null, 
+)
