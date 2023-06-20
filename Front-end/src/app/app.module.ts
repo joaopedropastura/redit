@@ -24,9 +24,9 @@ import { NewAccountPageComponent } from './new-account-page/new-account-page.com
     LoginPageComponent,
     NavComponent,
     PasswordComponent,
-    NewAccountPageComponent
   ],
   imports: [
+    NewAccountPageComponent,
     FeedPageComponent,
     BrowserModule,
     AppRoutingModule,
