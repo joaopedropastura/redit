@@ -18,7 +18,8 @@ export class LoginPageComponent {
   }
 
   login(){
-    if (this.email == "redit@desconstruido.com" && this.password == "123"){
+    
+    if (this.email == "123" && this.password == "123"){
       sessionStorage.setItem('user', 'redit')
       this.router.navigate(["/feed"])
     }

@@ -11,22 +11,34 @@ import { PasswordComponent } from './password/password.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {NgFor, AsyncPipe} from '@angular/common';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     NavComponent,
-    FeedPageComponent,
     PasswordComponent
   ],
   imports: [
+    FeedPageComponent,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NgFor,
+    AsyncPipe,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
