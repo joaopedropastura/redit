@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-
 namespace Back_end.Controllers;
+using Back_end.Model;
 
 [ApiController]
-[Route("[create-user]")]
+[Route("new-user")]
 public class CreateUser : ControllerBase
 {
-    [HttpGet("{user}")]
-    public void Add()
+    [HttpPost]
+    public void Add([FromBody] UserTable usertb)
     {
-        
+        return user;
     }
 }
