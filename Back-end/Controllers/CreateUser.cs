@@ -9,6 +9,6 @@ public class CreateUser : ControllerBase
     [HttpPost]
     public void Add([FromBody] UserTable usertb)
     {
-        return user;
+        
     }
 }

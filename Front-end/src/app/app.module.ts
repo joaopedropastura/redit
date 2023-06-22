@@ -16,6 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgFor, AsyncPipe} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import { NewAccountPageComponent } from './new-account-page/new-account-page.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { NewAccountPageComponent } from './new-account-page/new-account-page.com
     MatInputModule,
     NgFor,
     AsyncPipe,
+    MatIconModule
     
 
   ],
