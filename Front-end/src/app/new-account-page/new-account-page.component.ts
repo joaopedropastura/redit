@@ -10,13 +10,12 @@ import {
 
 import { userData } from '../user-data';
 import {ErrorStateMatcher} from '@angular/material/core';
-import {NgIf} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatIconModule} from '@angular/material/icon';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -35,7 +34,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    NgIf,
     MatIconModule,
     MatButtonModule,
     MatNativeDateModule,
@@ -53,7 +51,8 @@ export class NewAccountPageComponent {
     email : "",
     name : "",
     cpf : "",
-    bornDate : new Date()
+    bornDate : new Date(),
+    AssignDate : new Date()
   }
 
 

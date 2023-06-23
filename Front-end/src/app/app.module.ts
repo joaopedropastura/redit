@@ -8,15 +8,17 @@ import { NavComponent } from './nav/nav.component';
 import { FeedPageComponent } from './feed-page/feed-page.component';
 import { FormsModule } from '@angular/forms';
 import { PasswordComponent } from './password/password.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {NgFor, AsyncPipe} from '@angular/common';
-import {MatInputModule} from '@angular/material/input';
 import { NewAccountPageComponent } from './new-account-page/new-account-page.component';
-import {MatIconModule} from '@angular/material/icon';
+
+import { NgFor, AsyncPipe } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { InitPageComponent } from './init-page/init-page.component';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import {MatIconModule} from '@angular/material/icon';
     LoginPageComponent,
     NavComponent,
     PasswordComponent,
+    InitPageComponent,
   ],
   imports: [
     NewAccountPageComponent,

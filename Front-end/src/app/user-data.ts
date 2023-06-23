@@ -5,4 +5,5 @@ export interface userData {
     name : string;
     cpf : string;
     bornDate : Date;
+    AssignDate: Date;
 }

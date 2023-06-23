@@ -3,7 +3,7 @@ export interface NewUser{
     Name: string,
     Cpf: string,
     UserName: string,
+    Password: string 
     BornDate: Date,
     AssignDate: Date,
-    Password: string 
 }
