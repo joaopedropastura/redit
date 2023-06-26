@@ -2,11 +2,11 @@ using System.Linq.Expressions;
 
 namespace Back_end.Model;
 
-public class NewUser : INewUser
+public class UserService : IUserService
 {
     private RedeSocialContext entity;
 
-    public NewUser(RedeSocialContext service) => this.entity = service;
+    public UserService(RedeSocialContext service) => this.entity = service;
     public void Add(UserTable user)
     {
         entity.UserTables.Add(user);
