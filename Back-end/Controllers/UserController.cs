@@ -12,7 +12,7 @@ public class UserController : ControllerBase
 {
     [HttpPost]
     [EnableCors("MainPolicy")]
-    public void add ([FromServices]IUserService service, [FromBody]UserTable user)
+    public void Add ([FromServices]IUserService service, [FromBody]UserTable user)
     {
         service.Add(user);
     }
