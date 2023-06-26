@@ -1,9 +1,9 @@
 export interface NewUser{
-    Id : number,
-    Name: string,
-    Cpf: string,
-    UserName: string,
-    Password: string 
-    BornDate: Date,
-    AssignDate: Date,
+    email : string;
+    name : string;
+    cpf : string;
+    userName : string;
+    password : string;
+    bornDate : Date;
+    AssignDate: Date;
 }

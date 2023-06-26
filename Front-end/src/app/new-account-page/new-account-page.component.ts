@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import {
   FormControl,
   FormGroupDirective,
@@ -8,7 +9,6 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 
-import { userData } from '../user-data';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -17,6 +17,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatIconModule} from '@angular/material/icon';
 
+import { NewUser } from '../new-user';
+import { NewUserService } from '../new-user.service';
+import { CommonModule } from '@angular/common';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -38,13 +41,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     MatButtonModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    
+    CommonModule
   ],
 
 })
 export class NewAccountPageComponent {
+
+  constructor(private service : NewUserService) { }
+
   hide = true;
-  userRegister : userData =
+  userRegister : NewUser =
   {
     password : "",
     userName : "",
@@ -54,10 +60,17 @@ export class NewAccountPageComponent {
     bornDate : new Date(),
     AssignDate : new Date()
   }
+  
+  add(){
+    this.service.add(this.userRegister)
+      .subscribe(result =>
+      {
 
+      })
+  }
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-
-  matcher = new MyErrorStateMatcher();
-
+  usernameFormControl = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  nameFormControl = new FormControl('', [Validators.required]);
+  cpfFormControl = new FormControl('', [Validators.required, Validators.minLength(11)]);
 }

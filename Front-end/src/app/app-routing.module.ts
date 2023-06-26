@@ -4,10 +4,19 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedPageComponent } from './feed-page/feed-page.component';
 import { NewAccountPageComponent } from './new-account-page/new-account-page.component';
 import { InitPageComponent } from './init-page/init-page.component';
+import { MainComponent } from './main/main.component';
+
+
+
 
 const routes: Routes = [
+  {
+    path: '', component : MainComponent,
+    children: [
+      { path : 'feed', component : FeedPageComponent}
+    ]
+  },
   { path: "login", component: LoginPageComponent },
-  { path: "feed", component: FeedPageComponent },
   { path: "initial", component: InitPageComponent},
   { path: "new-account", component : NewAccountPageComponent}
 ];

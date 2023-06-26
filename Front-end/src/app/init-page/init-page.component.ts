@@ -12,12 +12,14 @@ export class InitPageComponent {
   @Output() colorChanged = new EventEmitter<boolean>();
 
   protected btnSelected1 = "background-color: aqua;"
-  protected btnSelected2 = "rgba(0, 0, 0, 0);"
+  protected btnSelected2 = "background-color: rgba(0, 0, 0, 0);"
 
   protected selected = false
-  protected changeBackgroundColor(){
+
+  protected changeBackgroundColor()
+  {
     if (this.selected){
-      this.btnSelected2 = "rgba(0, 0, 0, 0);"
+      this.btnSelected2 = "background-color: rgba(0, 0, 0, 0);"
 
     }
     this.btnSelected2 = "background-color: aqua;"

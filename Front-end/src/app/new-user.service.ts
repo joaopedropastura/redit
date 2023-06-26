@@ -8,6 +8,7 @@ import { NewUser } from './new-user';
 export class NewUserService {
 
   constructor(private http: HttpClient) { }
+  
   add(NewUser: NewUser){
     return this.http.post("http://localhost:5027/new-user", NewUser)
   }
