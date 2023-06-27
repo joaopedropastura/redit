@@ -20,6 +20,7 @@ import { NewAccountPageComponent } from './new-account-page/new-account-page.com
 import { InitPageComponent } from './init-page/init-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MainComponent } from './main/main.component';
     PasswordComponent,
     InitPageComponent,
     MainComponent,
+    ProfilePageComponent,
   ],
   imports: [
     NewAccountPageComponent,

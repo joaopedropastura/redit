@@ -7,9 +7,9 @@ public class UserService : IUserService
     private RedeSocialContext entity;
 
     public UserService(RedeSocialContext service) => this.entity = service;
-    public void Add(UserTable user)
+    public void Add(Usertable user)
     {
-        entity.UserTables.Add(user);
+        entity.Usertables.Add(user);
         entity.SaveChanges();
     }
 }

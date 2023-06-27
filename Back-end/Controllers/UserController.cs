@@ -1,9 +1,8 @@
 using Back_end.Model;
-using Back_end;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
-
 namespace Back_end.Controllers;
+using security_jwt;
 
 
 [ApiController]
@@ -12,8 +11,9 @@ public class UserController : ControllerBase
 {
     [HttpPost]
     [EnableCors("MainPolicy")]
-    public void Add ([FromServices]IUserService service, [FromBody]UserTable user)
+    public void Add ([FromServices]IUserService service, [FromBody]Usertable user)
     {
+        
         service.Add(user);
     }
 }
