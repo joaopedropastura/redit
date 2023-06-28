@@ -1,9 +1,11 @@
 #main{
+    padding-top: 5vh;
     display: flex;
     width: 100vw;
     height: 100vh;
     flex-direction: column;
     align-items: center;
+    gap: 3vh;
 }
 
 .inputs{
@@ -12,6 +14,6 @@
     flex-direction: column;
 }
 
-mat-form-field{
+.input-unit{
     border-radius: 10px;
 }

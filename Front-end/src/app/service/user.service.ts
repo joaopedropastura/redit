@@ -24,5 +24,5 @@ interface CreateUserResult {
 }
 
 interface LoginResult {
-  jwt : string
+  value : string
 }

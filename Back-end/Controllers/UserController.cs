@@ -77,7 +77,7 @@ public class UserController : ControllerBase
             var jwt = jwtService.GetToken<UserToken>(new UserToken { id = actUser.Cpf });
             return Ok(new Jwt(){ Value =  jwt});
         } 
-        
+
         return Ok(new {Message = "Usuario ou senha incorretos"});
 
 

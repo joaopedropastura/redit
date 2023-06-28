@@ -1,10 +1,12 @@
-<h1>Login</h1>
-
-
 
 <div id="main">
+    <h2>Login</h2>
+    <div>
+        <h1>Bem vindo de volta! ao Reddit</h1>
+        <span>tava com saudade...</span>
+    </div>
     <form class="example-form inputs">
-        <mat-form-field>
+        <mat-form-field class="input-unit">
             <mat-label>Enter your email</mat-label>
             <input [(ngModel)]="userData.email" matInput placeholder="pat@example.com" [formControl]="email" required>
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
@@ -21,10 +23,10 @@
     <div>
         <button mat-flat-button color="primary" (click)="login()">Logar</button>
         <div id="other-options">
-            <span>
+            <div>
                 Não possui conta?
                 <a routerLink="/new-account" routerLinkActive="active">Crie uma agora mesmo!</a>
-            </span>
+            </div>
 
         </div>
     </div>

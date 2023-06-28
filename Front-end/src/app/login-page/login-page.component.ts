@@ -49,21 +49,8 @@ export class LoginPageComponent {
 
     
       .subscribe(res => {
-        console.log(res)
-        console.log(res.jwt)
-        sessionStorage.setItem("UsuarioLogadoId", res.jwt)
+        sessionStorage.setItem("UsuarioLogadoId", res.value)
       })
-    // this.service.login(this.userData)
-    // .subscribe({
-    //   next(value) {
-    //     sessionStorage.setItem("UsuarioLogadoId", value.message)
-    //   },
-    //   error(err) {
-    //     console.log(err)
-    //   },
-    //   complete() {
-    //     console.log("Cabo")
-    //   },
-    // })
+    
   }
 }
