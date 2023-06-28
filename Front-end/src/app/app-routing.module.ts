@@ -6,9 +6,6 @@ import { NewAccountPageComponent } from './new-account-page/new-account-page.com
 import { InitPageComponent } from './init-page/init-page.component';
 import { MainComponent } from './main/main.component';
 
-
-
-
 const routes: Routes = [
   {
     path: '', component : MainComponent,
