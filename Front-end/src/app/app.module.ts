@@ -26,7 +26,6 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
     NavComponent,
     PasswordComponent,
     InitPageComponent,
@@ -34,6 +33,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     ProfilePageComponent,
   ],
   imports: [
+    LoginPageComponent,
     NewAccountPageComponent,
     FeedPageComponent,
     BrowserModule,

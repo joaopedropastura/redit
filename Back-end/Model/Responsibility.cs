@@ -9,5 +9,7 @@ public partial class Responsibility
 
     public string Name { get; set; } = null!;
 
+    public virtual ICollection<HasResponsibility> HasResponsibilities { get; set; } = new List<HasResponsibility>();
+
     public virtual ICollection<ResponsibilityPermission> ResponsibilityPermissions { get; set; } = new List<ResponsibilityPermission>();
 }

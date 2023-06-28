@@ -9,5 +9,7 @@ public partial class Comunity
 
     public string Name { get; set; } = null!;
 
+    public virtual ICollection<HasResponsibility> HasResponsibilities { get; set; } = new List<HasResponsibility>();
+
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 }

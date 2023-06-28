@@ -19,6 +19,8 @@ public partial class RedeSocialContext : DbContext
 
     public virtual DbSet<Comunity> Comunities { get; set; }
 
+    public virtual DbSet<HasResponsibility> HasResponsibilities { get; set; }
+
     public virtual DbSet<Like> Likes { get; set; }
 
     public virtual DbSet<Permission> Permissions { get; set; }
@@ -39,7 +41,7 @@ public partial class RedeSocialContext : DbContext
     {
         modelBuilder.Entity<Comment>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__COMMENTS__3214EC27AFCC330D");
+            entity.HasKey(e => e.Id).HasName("PK__COMMENTS__3214EC27157D7547");
 
             entity.ToTable("COMMENTS");
 
@@ -56,16 +58,16 @@ public partial class RedeSocialContext : DbContext
 
             entity.HasOne(d => d.IdPostNavigation).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.IdPost)
-                .HasConstraintName("FK__COMMENTS__ID_POS__71D1E811");
+                .HasConstraintName("FK__COMMENTS__ID_POS__47DBAE45");
 
             entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.IdUser)
-                .HasConstraintName("FK__COMMENTS__ID_USE__70DDC3D8");
+                .HasConstraintName("FK__COMMENTS__ID_USE__46E78A0C");
         });
 
         modelBuilder.Entity<Comunity>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__COMUNITY__3214EC273AEEFD02");
+            entity.HasKey(e => e.Id).HasName("PK__COMUNITY__3214EC27D6501CDE");
 
             entity.ToTable("COMUNITY");
 
@@ -76,9 +78,36 @@ public partial class RedeSocialContext : DbContext
                 .HasColumnName("NAME");
         });
 
+        modelBuilder.Entity<HasResponsibility>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__HAS_RESP__3214EC2746DD8092");
+
+            entity.ToTable("HAS_RESPONSIBILITY");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.IdComunity).HasColumnName("ID_COMUNITY");
+            entity.Property(e => e.IdResponsibility).HasColumnName("ID_RESPONSIBILITY");
+            entity.Property(e => e.IdUser)
+                .HasMaxLength(11)
+                .IsUnicode(false)
+                .HasColumnName("ID_USER");
+
+            entity.HasOne(d => d.IdComunityNavigation).WithMany(p => p.HasResponsibilities)
+                .HasForeignKey(d => d.IdComunity)
+                .HasConstraintName("FK__HAS_RESPO__ID_CO__4AB81AF0");
+
+            entity.HasOne(d => d.IdResponsibilityNavigation).WithMany(p => p.HasResponsibilities)
+                .HasForeignKey(d => d.IdResponsibility)
+                .HasConstraintName("FK__HAS_RESPO__ID_RE__4CA06362");
+
+            entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.HasResponsibilities)
+                .HasForeignKey(d => d.IdUser)
+                .HasConstraintName("FK__HAS_RESPO__ID_US__4BAC3F29");
+        });
+
         modelBuilder.Entity<Like>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__LIKES__3214EC2766E73682");
+            entity.HasKey(e => e.Id).HasName("PK__LIKES__3214EC273C21888B");
 
             entity.ToTable("LIKES");
 
@@ -91,16 +120,16 @@ public partial class RedeSocialContext : DbContext
 
             entity.HasOne(d => d.IdPostNavigation).WithMany(p => p.Likes)
                 .HasForeignKey(d => d.IdPost)
-                .HasConstraintName("FK__LIKES__ID_POST__6E01572D");
+                .HasConstraintName("FK__LIKES__ID_POST__440B1D61");
 
             entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.Likes)
                 .HasForeignKey(d => d.IdUser)
-                .HasConstraintName("FK__LIKES__ID_USER__6D0D32F4");
+                .HasConstraintName("FK__LIKES__ID_USER__4316F928");
         });
 
         modelBuilder.Entity<Permission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__PERMISSI__3214EC2773ED2412");
+            entity.HasKey(e => e.Id).HasName("PK__PERMISSI__3214EC273A689C8B");
 
             entity.ToTable("PERMISSION");
 
@@ -113,7 +142,7 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__POSTS__3214EC276E8D1B84");
+            entity.HasKey(e => e.Id).HasName("PK__POSTS__3214EC27C6C78A20");
 
             entity.ToTable("POSTS");
 
@@ -137,16 +166,16 @@ public partial class RedeSocialContext : DbContext
 
             entity.HasOne(d => d.IdComunityNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.IdComunity)
-                .HasConstraintName("FK__POSTS__ID_COMUNI__693CA210");
+                .HasConstraintName("FK__POSTS__ID_COMUNI__3F466844");
 
             entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.IdUser)
-                .HasConstraintName("FK__POSTS__ID_USER__6A30C649");
+                .HasConstraintName("FK__POSTS__ID_USER__403A8C7D");
         });
 
         modelBuilder.Entity<Responsibility>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__RESPONSI__3214EC27BE1F75AE");
+            entity.HasKey(e => e.Id).HasName("PK__RESPONSI__3214EC279870ED12");
 
             entity.ToTable("RESPONSIBILITY");
 
@@ -159,7 +188,7 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<ResponsibilityPermission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__RESPONSI__3214EC275BB80A14");
+            entity.HasKey(e => e.Id).HasName("PK__RESPONSI__3214EC27929CAC20");
 
             entity.ToTable("RESPONSIBILITY_PERMISSION");
 
@@ -169,18 +198,20 @@ public partial class RedeSocialContext : DbContext
 
             entity.HasOne(d => d.IdPermissionNavigation).WithMany(p => p.ResponsibilityPermissions)
                 .HasForeignKey(d => d.IdPermission)
-                .HasConstraintName("FK__RESPONSIB__ID_PE__66603565");
+                .HasConstraintName("FK__RESPONSIB__ID_PE__52593CB8");
 
             entity.HasOne(d => d.IdResponsibilityNavigation).WithMany(p => p.ResponsibilityPermissions)
                 .HasForeignKey(d => d.IdResponsibility)
-                .HasConstraintName("FK__RESPONSIB__ID_RE__656C112C");
+                .HasConstraintName("FK__RESPONSIB__ID_RE__5165187F");
         });
 
         modelBuilder.Entity<Usertable>(entity =>
         {
-            entity.HasKey(e => e.Cpf).HasName("PK__USERTABL__C1F8973047A822D9");
+            entity.HasKey(e => e.Cpf).HasName("PK__USERTABL__C1F89730465B80AE");
 
             entity.ToTable("USERTABLE");
+
+            entity.HasIndex(e => e.Email, "UQ__USERTABL__161CF724C4AC7216").IsUnique();
 
             entity.Property(e => e.Cpf)
                 .HasMaxLength(11)
@@ -193,16 +224,19 @@ public partial class RedeSocialContext : DbContext
             entity.Property(e => e.Borndate)
                 .HasColumnType("date")
                 .HasColumnName("BORNDATE");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("EMAIL");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("NAME");
             entity.Property(e => e.Password)
-                .HasMaxLength(36)
-                .IsUnicode(false)
+                .HasMaxLength(150)
                 .HasColumnName("PASSWORD");
             entity.Property(e => e.Salt)
-                .HasMaxLength(12)
+                .HasMaxLength(120)
                 .IsUnicode(false)
                 .HasColumnName("SALT");
             entity.Property(e => e.Username)

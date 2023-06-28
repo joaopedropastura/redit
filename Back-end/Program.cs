@@ -1,5 +1,6 @@
 using Back_end.Model;
 using Back_end.Services;
+using security_jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,11 @@ builder.Services.AddScoped<RedeSocialContext>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ISecurityService, SecurityService>();
 
+builder.Services.AddTransient<IPasswordProvider>( p => {
+    return new PasswordProvider("carioca");
+});
+
+builder.Services.AddTransient<IJwtService, JwtService>();
 
 
 
@@ -45,4 +51,3 @@ app.MapControllers();
 app.UseCors();
 
 app.Run();
-

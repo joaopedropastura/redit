@@ -1,5 +1,7 @@
 public interface ISecurityService
 {
     string GenerateSalt();
-    string ApplyHash(string pass, string salt);
+    byte[] ApplyHash(string pass, string salt);
+
+    bool Validate(byte[] password, byte[] input);
 }

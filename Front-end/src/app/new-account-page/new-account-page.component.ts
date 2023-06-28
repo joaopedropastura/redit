@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NewUser } from '../service/new-user';
+import { UserService } from '../service/user.service';
+
 
 import {
   FormControl,
@@ -17,9 +20,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatIconModule} from '@angular/material/icon';
 
-import { NewUser } from '../new-user';
-import { NewUserService } from '../new-user.service';
+
 import { CommonModule } from '@angular/common';
+import { of } from 'rxjs';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -47,8 +50,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class NewAccountPageComponent {
 
-  constructor(private service : NewUserService) { }
-
+  constructor(private service : UserService) { }
+  messageResponse = ""
   hide = true;
   userRegister : NewUser =
   {
@@ -63,10 +66,18 @@ export class NewAccountPageComponent {
   
   add(){
     this.service.add(this.userRegister)
-      .subscribe(result =>
-      {
-
+      .subscribe({
+        next(value) {
+          sessionStorage.setItem("UsuarioLogadoId", value.message)
+        },
+        error(err) {
+          console.log(err)
+        },
+        complete() {
+          console.log("Cabo")
+        },
       })
+
   }
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);

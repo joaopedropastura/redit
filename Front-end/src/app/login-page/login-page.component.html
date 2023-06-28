@@ -1,14 +1,31 @@
 <h1>Login</h1>
 
-<div>
-    <label for="">Email/Username</label>
-    <input [(ngModel)]="email">
-</div>
-<app-password [seePassword]="false" [breakLineOnInput]="true" (valueChanged)="passwordChanged($event)" />
-<div>
-    <button mat-flat-button color="primary" (click)="login()">Logar</button>
-    <div id="other-options">
-        <span>Não possui conta? <a routerLink="/new-account">Crie uma agora mesmo!</a></span>
-        <span><a href="{{'/recover' + email}}">Recuperar senha</a></span>
+
+
+<div id="main">
+    <form class="example-form inputs">
+        <mat-form-field>
+            <mat-label>Enter your email</mat-label>
+            <input [(ngModel)]="userData.email" matInput placeholder="pat@example.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="userData.password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+    <div>
+        <button mat-flat-button color="primary" (click)="login()">Logar</button>
+        <div id="other-options">
+            <span>
+                Não possui conta?
+                <a routerLink="/new-account" routerLinkActive="active">Crie uma agora mesmo!</a>
+            </span>
+
+        </div>
     </div>
 </div>
