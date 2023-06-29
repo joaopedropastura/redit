@@ -63,9 +63,5 @@ public class UserController : ControllerBase
         } 
 
         return Ok(new {Message = "Usuario ou senha incorretos"});
-
-
-
-
     }
 }

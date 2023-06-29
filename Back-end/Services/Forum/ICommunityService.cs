@@ -8,4 +8,6 @@ public interface ICommunityService
     Task Remove(Comunity comunity);
     Task Add(Comunity comunity);
     Task Update(Comunity comunity);
+    Task<bool> Exist(Expression<Func<Comunity, bool>> exp);
+
 }

@@ -24,6 +24,11 @@ public class CommunityController : ControllerBase
             Description = community.Description
         };
 
+        var CommunityExist = await service.Exist( u => u.Title == community.Title);
+
+        if (CommunityExist)
+            return Ok(new {Message = "Comunidade ja existente"});
+                    
         await service.Add(newComunity);
         return Ok( new {Message = "Comunidade criada com sucesso!"});
     }

@@ -30,5 +30,9 @@ public class CommunityService : ICommunityService
         entity.Comunities.Update(community);
         await entity.SaveChangesAsync();
     }
-    
+
+    public async Task<bool> Exist(Expression<Func<Comunity, bool>> exp)
+    {
+        return await entity.Comunities.AnyAsync(exp);
+    }
 }
