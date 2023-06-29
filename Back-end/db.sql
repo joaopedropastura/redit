@@ -1,9 +1,16 @@
-drop database redeSocial
+use master
 go
+
+if (exists(select * from sys.databases where name = 'redeSocial'))
+	drop database redeSocial
+go
+
 create database redeSocial
 go
+
 use redeSocial
 go
+
 CREATE TABLE USERTABLE
 (
     CPF VARCHAR(11) PRIMARY KEY,

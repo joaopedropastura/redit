@@ -6,9 +6,7 @@ namespace Back_end.Model;
 
 public class CommunityService : ICommunityService
 {
-
     private RedeSocialContext entity;
-
     public CommunityService(RedeSocialContext service) => this.entity = service;
     public async Task<List<Comunity>> Filter(Expression<Func<Comunity, bool>> exp)
     {
@@ -27,5 +25,10 @@ public class CommunityService : ICommunityService
         await entity.SaveChangesAsync();
     }
 
+    public async Task Update(Comunity community)
+    {
+        entity.Comunities.Update(community);
+        await entity.SaveChangesAsync();
+    }
     
 }

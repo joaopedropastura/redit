@@ -7,5 +7,5 @@ public interface ICommunityService
     Task<List<Comunity>> Filter(Expression<Func<Comunity, bool>> exp);
     Task Remove(Comunity comunity);
     Task Add(Comunity comunity);
-
+    Task Update(Comunity comunity);
 }
