@@ -1,4 +1,4 @@
-public class Comunity
+public class NewComunity
 {
     public string Title { get; set; }
     public string Description { get; set; }

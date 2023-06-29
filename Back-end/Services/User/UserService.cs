@@ -32,9 +32,6 @@ public class UserService : IUserService
         var log = userList.FirstOrDefault();
         return log;
     }
-
-
-    // public async Task<Usertable> Find()
     public async Task Add(Usertable user)
     {
         entity.Usertables.Add(user);

@@ -1,6 +1,7 @@
 using Back_end.Model;
 using Back_end.Services;
-using security_jwt;
+
+using Security.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<RedeSocialContext>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ISecurityService, SecurityService>();
+builder.Services.AddTransient<ICommunityService, CommunityService>();
 
 builder.Services.AddTransient<IPasswordProvider>( p => {
     return new PasswordProvider("carioca");

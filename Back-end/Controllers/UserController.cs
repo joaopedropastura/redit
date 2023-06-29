@@ -1,7 +1,9 @@
 using Back_end.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
-using security_jwt;
+using Security.Jwt;
+using System.Text;
+
 namespace Back_end.Controllers;
 
 
@@ -30,7 +32,7 @@ public class UserController : ControllerBase
             Username = user.Username,
             Name = user.Name,
             Cpf = user.Cpf,
-            Password = password,
+            Password = Convert.ToBase64String(password),
             Salt = salt,
             Borndate = user.DataNasc,
             Email = user.Email
@@ -56,7 +58,9 @@ public class UserController : ControllerBase
         Usertable actUser = await service.FindByEmail(user.Email);
 
         var hashedInput = security.ApplyHash(user.Password, actUser.Salt);
-        if(security.Validate(actUser.Password, hashedInput))
+        var passwordBytes = Encoding.ASCII.GetBytes(actUser.Password);
+
+        if(security.Validate(passwordBytes, hashedInput))
         {
             var jwt = jwtService.GetToken<UserToken>(new UserToken { id = actUser.Cpf });
             return Ok(new Jwt(){ Value =  jwt});

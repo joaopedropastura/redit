@@ -15,13 +15,15 @@ public partial class Usertable
 
     public string? Salt { get; set; }
 
-    public byte[] Password { get; set; } = null!;
+    public string Password { get; set; } = null!;
 
     public DateTime? Borndate { get; set; }
 
     public DateTime Assigndate { get; set; }
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
+    public virtual ICollection<Comunity> Comunities { get; set; } = new List<Comunity>();
 
     public virtual ICollection<HasResponsibility> HasResponsibilities { get; set; } = new List<HasResponsibility>();
 

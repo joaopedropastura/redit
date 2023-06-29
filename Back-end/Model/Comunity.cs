@@ -7,7 +7,13 @@ public partial class Comunity
 {
     public int Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string Title { get; set; } = null!;
+
+    public string? Creator { get; set; }
+
+    public string? Description { get; set; }
+
+    public virtual Usertable? CreatorNavigation { get; set; }
 
     public virtual ICollection<HasResponsibility> HasResponsibilities { get; set; } = new List<HasResponsibility>();
 
