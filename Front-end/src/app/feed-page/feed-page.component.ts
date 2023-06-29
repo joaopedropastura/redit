@@ -6,6 +6,8 @@ import {NgFor, AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-feed-page',
@@ -18,12 +20,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatAutocompleteModule,
     ReactiveFormsModule,
     NgFor,
-    AsyncPipe]
+    AsyncPipe,
+    MatIconModule,
+    MatButtonModule,
+  ]
 })
 export class FeedPageComponent {
   myControl = new FormControl('');
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]> | undefined;
+
+  
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
