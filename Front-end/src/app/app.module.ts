@@ -23,6 +23,7 @@ import { MainComponent } from './main/main.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { NewCommunityComponent } from './new-community/new-community.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { NewPostComponent } from './new-post/new-post.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {MatMenuModule} from '@angular/material/menu';
     InitPageComponent,
     MainComponent,
     ProfilePageComponent,
+    NewPostComponent,
   ],
   imports: [
     NewCommunityComponent,

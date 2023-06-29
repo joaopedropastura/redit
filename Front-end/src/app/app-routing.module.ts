@@ -6,6 +6,9 @@ import { NewAccountPageComponent } from './new-account-page/new-account-page.com
 import { InitPageComponent } from './init-page/init-page.component';
 import { MainComponent } from './main/main.component';
 import { NewCommunityComponent } from './new-community/new-community.component';
+import { NewPostComponent } from './new-post/new-post.component';
+
+
 const routes: Routes = [
   {
     path: '', component : MainComponent,
@@ -16,7 +19,8 @@ const routes: Routes = [
   { path: "login", component: LoginPageComponent },
   { path: "initial", component: InitPageComponent},
   { path: "new-account", component : NewAccountPageComponent},
-  { path: "new-community", component : NewCommunityComponent}
+  { path: "new-community", component : NewCommunityComponent},
+  { path: "new-post", component : NewPostComponent}
 ];
 
 @NgModule({
