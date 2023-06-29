@@ -15,7 +15,7 @@ public partial class Usertable
 
     public string? Salt { get; set; }
 
-    public string Password { get; set; } = null!;
+    public byte[] Password { get; set; } = null!;
 
     public DateTime? Borndate { get; set; }
 

@@ -41,7 +41,7 @@ public partial class RedeSocialContext : DbContext
     {
         modelBuilder.Entity<Comment>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__COMMENTS__3214EC27FDEBD3BA");
+            entity.HasKey(e => e.Id).HasName("PK__COMMENTS__3214EC275F2B8DD8");
 
             entity.ToTable("COMMENTS");
 
@@ -67,7 +67,7 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<Comunity>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__COMUNITY__3214EC274435F5F1");
+            entity.HasKey(e => e.Id).HasName("PK__COMUNITY__3214EC27722373DC");
 
             entity.ToTable("COMUNITY");
 
@@ -92,7 +92,7 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<HasResponsibility>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__HAS_RESP__3214EC27D608EE08");
+            entity.HasKey(e => e.Id).HasName("PK__HAS_RESP__3214EC2770833AC2");
 
             entity.ToTable("HAS_RESPONSIBILITY");
 
@@ -119,7 +119,7 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<Like>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__LIKES__3214EC27A3549B13");
+            entity.HasKey(e => e.Id).HasName("PK__LIKES__3214EC2773552F94");
 
             entity.ToTable("LIKES");
 
@@ -141,7 +141,7 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<Permission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__PERMISSI__3214EC2760E890D6");
+            entity.HasKey(e => e.Id).HasName("PK__PERMISSI__3214EC2750B4B8C4");
 
             entity.ToTable("PERMISSION");
 
@@ -154,7 +154,7 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__POSTS__3214EC2703F5A85C");
+            entity.HasKey(e => e.Id).HasName("PK__POSTS__3214EC27B1141DD3");
 
             entity.ToTable("POSTS");
 
@@ -187,7 +187,7 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<Responsibility>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__RESPONSI__3214EC27720FF3D1");
+            entity.HasKey(e => e.Id).HasName("PK__RESPONSI__3214EC27EFB1845B");
 
             entity.ToTable("RESPONSIBILITY");
 
@@ -200,7 +200,7 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<ResponsibilityPermission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__RESPONSI__3214EC275F139B50");
+            entity.HasKey(e => e.Id).HasName("PK__RESPONSI__3214EC2725538998");
 
             entity.ToTable("RESPONSIBILITY_PERMISSION");
 
@@ -219,11 +219,11 @@ public partial class RedeSocialContext : DbContext
 
         modelBuilder.Entity<Usertable>(entity =>
         {
-            entity.HasKey(e => e.Cpf).HasName("PK__USERTABL__C1F8973004F1AA40");
+            entity.HasKey(e => e.Cpf).HasName("PK__USERTABL__C1F89730A2E5F6E8");
 
             entity.ToTable("USERTABLE");
 
-            entity.HasIndex(e => e.Email, "UQ__USERTABL__161CF72487C2B0AC").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__USERTABL__161CF724AEBC40CB").IsUnique();
 
             entity.Property(e => e.Cpf)
                 .HasMaxLength(11)
@@ -246,7 +246,6 @@ public partial class RedeSocialContext : DbContext
                 .HasColumnName("NAME");
             entity.Property(e => e.Password)
                 .HasMaxLength(120)
-                .IsUnicode(false)
                 .HasColumnName("PASSWORD");
             entity.Property(e => e.Salt)
                 .HasMaxLength(120)
