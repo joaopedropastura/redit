@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed-page',
@@ -30,6 +31,8 @@ export class FeedPageComponent {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]> | undefined;
 
+  constructor( public router : Router ) { }
+
 
 
   ngOnInit() {
@@ -41,7 +44,7 @@ export class FeedPageComponent {
 
   showForms()
   {
-    
+    this.router.navigate(['/new-community'])
   }
 
   private _filter(value: string): string[] {

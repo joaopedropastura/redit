@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from '../service/user.service';
-import { LoginUserResult as LoginUser } from '../service/login-user';
+import { UserService } from '../service/user/user.service';
+import { LoginUserResult as LoginUser } from '../service/user/login-user';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';

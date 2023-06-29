@@ -15,7 +15,6 @@ public class CommunityController : ControllerBase
         [FromServices]IJwtService jwt
     )
     {
-
         var state = jwt.Validate<UserToken>(community.jwt).id;
         
         Comunity newComunity = new Comunity()
