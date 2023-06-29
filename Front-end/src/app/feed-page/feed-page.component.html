@@ -14,8 +14,18 @@
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>
-    
-    <button mat-fab matTooltip="Primary" color="primary" aria-label="Example fab with a heart icon" (click)="showForms()">
+
+    <button mat-fab matTooltip="Primary" color="primary" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>add</mat-icon>
-    </button>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item  (click)="showForms()">
+          <mat-icon>dialpad</mat-icon>
+          <span>Nova Comunidade</span>
+        </button>
+        <button mat-menu-item >
+          <mat-icon>voicemail</mat-icon>
+          <span>Postar</span>
+        </button>
+      </mat-menu>
 </form>

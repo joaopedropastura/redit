@@ -9,6 +9,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-feed-page',
@@ -24,6 +25,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     AsyncPipe,
     MatIconModule,
     MatButtonModule,
+    MatMenuModule
   ]
 })
 export class FeedPageComponent {

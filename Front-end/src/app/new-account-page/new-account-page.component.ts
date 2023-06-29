@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NewUser } from '../service/new-user';
-import { UserService } from '../service/user.service';
+import { NewUser } from '../service/user/new-user';
+import { UserService } from '../service/user/user.service';
 
 
 import {
@@ -23,6 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { CommonModule } from '@angular/common';
 import { of } from 'rxjs';
+import { MatMenuModule } from '@angular/material/menu';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -44,7 +45,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     MatButtonModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    CommonModule
+    CommonModule,
+    
   ],
 
 })

@@ -38,3 +38,7 @@ create table UserTable<br>
 	AssignDate DATE NOT NULL DEFAULT GETDATE(),<br>
 	password varchar(100) not null, <br>
 )<br>
+
+
+
+https://consolelog.com.br/modal-animations-angular/

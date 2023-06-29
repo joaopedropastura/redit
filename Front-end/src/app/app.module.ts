@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { NewCommunityComponent } from './new-community/new-community.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { NewCommunityComponent } from './new-community/new-community.component';
     NgFor,
     AsyncPipe,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
 
   ],
   providers: [],
