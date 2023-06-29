@@ -42,3 +42,5 @@ create table UserTable<br>
 
 
 https://consolelog.com.br/modal-animations-angular/
+
+https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/

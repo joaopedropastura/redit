@@ -49,6 +49,10 @@ export class FeedPageComponent {
     this.router.navigate(['/new-community'])
   }
 
+  showPost()
+  {
+    this.router.navigate(['/new-post'])
+  }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
