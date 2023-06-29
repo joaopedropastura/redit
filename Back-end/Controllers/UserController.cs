@@ -38,22 +38,6 @@ public class UserController : ControllerBase
 
         await service.Add(cadastro);
         return Ok();
-
-        // Usertable newUser = new Usertable();
-        // newUser.Salt = security.GenerateSalt();
-        // newUser.Password = security.ApplyHash(user.Password, newUser.Salt);
-        
-        // user.Password = newUser.Password;
-        // user.Salt = security.GenerateSalt();
-        
-        // var emailExist = await service.Exist(u => u.Email == user.Email);
-
-        // if(emailExist)
-        //     return Ok(new { Message = "Email ja existe no banco de dados" });
-        
-        // await service.Add(user);
-
-        // return Ok(new { Message = "Usuario criado" });
     }
 
     [HttpPost("login")]

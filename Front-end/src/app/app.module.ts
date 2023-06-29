@@ -21,6 +21,7 @@ import { InitPageComponent } from './init-page/init-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { NewCommunityComponent } from './new-community/new-community.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     ProfilePageComponent,
   ],
   imports: [
+    NewCommunityComponent,
     LoginPageComponent,
     NewAccountPageComponent,
     FeedPageComponent,

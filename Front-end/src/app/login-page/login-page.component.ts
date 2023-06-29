@@ -44,13 +44,12 @@ export class LoginPageComponent {
   constructor(private service : UserService) { }
 
   login(){
-    console.log(this.userData)
     this.service.login(this.userData)
 
     
       .subscribe(res => {
-        sessionStorage.setItem("UsuarioLogadoId", res.value)
+        sessionStorage.setItem("UserId", res.value)
       })
-    
+      console.log(sessionStorage.getItem("UserId"))
   }
 }

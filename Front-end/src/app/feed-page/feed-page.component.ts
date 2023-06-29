@@ -30,13 +30,18 @@ export class FeedPageComponent {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]> | undefined;
 
-  
+
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
     );
+  }
+
+  showForms()
+  {
+    
   }
 
   private _filter(value: string): string[] {
