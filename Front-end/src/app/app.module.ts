@@ -34,9 +34,9 @@ import { NewPostComponent } from './new-post/new-post.component';
     InitPageComponent,
     MainComponent,
     ProfilePageComponent,
-    NewPostComponent,
   ],
   imports: [
+    NewPostComponent,
     NewCommunityComponent,
     LoginPageComponent,
     NewAccountPageComponent,
