@@ -15,11 +15,11 @@ public class CommunityController : ControllerBase
         [FromServices]IJwtService jwt
     )
     {
-        var state = jwt.Validate<UserToken>(community.jwt).id;
+        var state = jwt.Validate<UserToken>(community.jwt).userId;
         
         Comunity newComunity = new Comunity()
         {
-            Creator = jwt.Validate<UserToken>(community.jwt).id,
+            Creator = jwt.Validate<UserToken>(community.jwt).userId,
             Title = community.Title,
             Description = community.Description
         };

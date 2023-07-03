@@ -58,7 +58,8 @@ public class UserController : ControllerBase
         var hashedInput = security.ApplyHash(user.Password, actUser.Salt);
         if(security.Validate(actUser.Password, hashedInput))
         {
-            var jwt = jwtService.GetToken<UserToken>(new UserToken { id = actUser.Cpf });
+            var jwt = jwtService.GetToken<UserToken>(new UserToken { userId = actUser.Cpf });
+            System.Console.WriteLine(jwt);
             return Ok(new Jwt(){ Value =  jwt});
         } 
 

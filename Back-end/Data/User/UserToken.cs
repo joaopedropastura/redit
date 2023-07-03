@@ -1,4 +1,4 @@
 public class UserToken
 {
-    public string id { get; set; }
+    public string userId { get; set; }
 }

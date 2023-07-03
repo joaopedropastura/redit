@@ -11,8 +11,15 @@ public class PostService : IPostService
 
     public PostService(RedeSocialContext service) => this.entity = service;
 
-    public Post public Task Add(Post post)
+    public async Task Add(Post post)
     {
-        throw new NotImplementedException();
+        entity.Posts.Add(post);
+        await entity.SaveChangesAsync();
     }
+    public async Task<List<Post>> Filter(Expression<Func<Post, bool>> exp)
+    {
+        var query = entity.Posts.Where(exp);
+        return await query.ToListAsync();
+    }
+
 }

@@ -23,6 +23,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<RedeSocialContext>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IPostService, PostService>();
 builder.Services.AddTransient<ISecurityService, SecurityService>();
 builder.Services.AddTransient<ICommunityService, CommunityService>();
 
