@@ -1,21 +1,40 @@
 <div id="main">
     <form class="example-form2 form">
+
         <mat-form-field class="example-full-width formInput">
-          <mat-label>Title</mat-label>
-          <input matInput placeholder="Ex. Loucos por pizza" [(ngModel)]="PostRegister.title">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Ex. Loucos por pizza" [(ngModel)]="PostRegister.title">
         </mat-form-field>
-      
+
+        <mat-form-field class="example-chip-list formInput">
+            <mat-label>Favorite Fruits</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Fruit selection">
+              <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+                {{fruit}}
+                <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            </mat-chip-grid>
+            <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl"
+              [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="add($event)"/>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                {{fruit}}
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
         <mat-form-field class="example-full-width formInput">
-          <mat-label>description</mat-label>
-          <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="PostRegister.postData" ></textarea>
+            <mat-label>description</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="PostRegister.postData"></textarea>
         </mat-form-field>
-  
-        <!-- <div id="err" *ngIf="HasError()">
-          {{Error}}
-        </div> -->
-  
-      </form>
-      <button id="btn" mat-fab extended color="primary" (click)="newPost()">
+
+    </form>
+   
+    <button id="btn" mat-fab extended color="primary" (click)="newPost()">
         criar
-      </button>
-  </div>
+    </button>
+</div>
