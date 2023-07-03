@@ -1,31 +1,23 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-        <mat-label>Number</mat-label>
-            <input type="text"
-                placeholder="Pick one"
-                aria-label="Number"
-                matInput
-                [formControl]="myControl"
-                [matAutocomplete]="auto">
-        
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
+<div id="main">
+  <app-search-community></app-search-community>
+  <!-- <div *ngFor="let post of posts" >
+  </div> -->
+    <app-post></app-post>  
+</div>
 
-    <button mat-fab matTooltip="Primary" color="primary" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>add</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item  (click)="showForms()">
-          <mat-icon>forum icon</mat-icon>
-          <span>Nova Comunidade</span>
-        </button>
-        <button mat-menu-item   (click)="showPost()">
-          <mat-icon>create icon</mat-icon>
-          <span>Postar</span>
-        </button>
-      </mat-menu>
-</form>
+
+<div id="add">
+  <button mat-fab matTooltip="Primary" color="primary" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item  (click)="showForms()">
+      <mat-icon>forum icon</mat-icon>
+      <span>Nova Comunidade</span>
+    </button>
+    <button mat-menu-item   (click)="showPost()">
+      <mat-icon>create icon</mat-icon>
+      <span>Postar</span>
+    </button>
+  </mat-menu>
+</div>

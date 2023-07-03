@@ -1,0 +1,11 @@
+#main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add{
+    position: absolute;
+    left: 82%;
+    top: 92%;
+}
