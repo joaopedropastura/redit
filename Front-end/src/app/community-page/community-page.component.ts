@@ -8,23 +8,18 @@ import { concatWith } from 'rxjs';
 })
 
 export class CommunityPageComponent {
-  box = document.getElementById('text-description');
-  
-  
+
   isNotHide : boolean = false
+  
   classtag =  this.isNotHide ? "hide" : "text-description"
-  // selected = document.querySelector('#text-description')
-  // protected moreInfo = 
-  moreInfo(){
-    // this.selected.setProperty()
-    console.log(this.box?.style.width)
-  }
+  btntag = this.isNotHide ? "Menos" : "Mais"
 
   changeVisibily()
   {
     this.isNotHide = !this.isNotHide
     this.classtag =  this.isNotHide ? "hide" : "text-description"
+    this.btntag = this.isNotHide ? "Menos" : "Mais"
   }
-
+  
 
 }
