@@ -20,7 +20,8 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './search-community.component.html',
   styleUrls: ['./search-community.component.css'],
   standalone: true,
-  imports: [FormsModule,
+  imports: [
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
@@ -33,11 +34,12 @@ import { HttpErrorResponse } from '@angular/common/http';
   ]
 })
 export class SearchCommunityComponent {
+  constructor( public router : Router, private service : FeedPageService ) { }
+  
   myControl = new FormControl('');
   options: string[] = [];
   filteredOptions: Observable<string[]> | undefined;
 
-  constructor( public router : Router, private service : FeedPageService ) { }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -45,13 +47,19 @@ export class SearchCommunityComponent {
       map(value => this._filter(value || '')),
     );
     const id = sessionStorage.getItem('UserId')
-
+    
     if (id === null) {
         console.error("sem id")
         this.router.navigate(["/login"])
         return
     }
 
+
+    console.log(this.filteredOptions)
+    if ( this.myControl.value != "")
+    {
+      console.log("mudou")
+    }
     const userId: UserId = {
         userId: id
     }
@@ -61,7 +69,6 @@ export class SearchCommunityComponent {
         .subscribe(res => {
             res.forEach((value) =>{
                 this.options.push(value.title)
-                console.log(value.title)
             })
         })
   }
@@ -76,9 +83,14 @@ export class SearchCommunityComponent {
     this.router.navigate(['/new-post'])
   }
   private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
 
+    const filterValue = value.toLowerCase();
+    if (this.options.includes(filterValue))
+    {
+      this.router.navigate(["/community-page", filterValue] )
+    }
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  
   }
 
 }

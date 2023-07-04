@@ -1,0 +1,87 @@
+
+#main{
+    background-color: whitesmoke;
+}
+p{
+    margin: 0;
+}
+
+#description{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imgs{
+    width: 100vw;
+    display: flex;
+    background: url("../../assets/img/racao.png");
+    align-items: end;
+    justify-content: center;
+    height: 15vh;
+    padding: 20px 0 5px 0;
+    
+}
+
+#userNames{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 7vh;
+    justify-content: center;
+}
+#name{
+    font-size: 22px;
+}
+#userName{
+    font-size: 12px;
+}
+
+#communityPhoto{
+    
+    height: inherit;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+#more-information{
+    border: none;
+    color: blue;
+}
+
+#backgroundCommunity{
+    z-index: 10;
+}
+
+#text-description{
+    white-space: nowrap; 
+    width: 90%; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+#hide {
+    white-space: normal; 
+    overflow: visible;
+    width: 90%; 
+}
+
+#posts{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+#join{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    align-items: center;
+}
+
+#joinbtn{
+    width: 100%;
+}
+

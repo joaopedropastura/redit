@@ -26,6 +26,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { NewPostComponent } from './new-post/new-post.component';
 import { SearchCommunityComponent } from './search-community/search-community.component';
 import { PostComponent } from './post/post.component';
+import { CommunityPageComponent } from './community-page/community-page.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { PostComponent } from './post/post.component';
     InitPageComponent,
     MainComponent,
     ProfilePageComponent,
+    CommunityPageComponent,
   ],
   imports: [
     PostComponent,
