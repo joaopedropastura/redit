@@ -17,28 +17,65 @@ public class FeedController : ControllerBase
     )
     {
         var userAuth = jwt.Validate<UserToken>(UserId.userId).userId;
-        var listCommunity =  await communityService.Filter(x => x.Id > 0);
-        
-        var temp = await userService.Filter(x => x.Cpf == userAuth);
+        var listCommunity = await communityService.Filter(x => x.Id > 0);
+        // var user = await userService.Filter(x => x.Cpf == userAuth);
+        // System.Console.WriteLine(user);
 
-        
-        System.Console.WriteLine(temp);
-
-        
         return Ok(listCommunity);
     }
 
-    [HttpGet ("list-posts")]
+    [HttpPost ("list-posts")]
     public async Task<ActionResult> getPosts(
         [FromBody] UserToken UserId,
         [FromServices] IJwtService jwt,
         [FromServices] IUserService userService,
-        [FromServices] IPostService postService
+        [FromServices] IPostService postService,
+        [FromServices] ICommunityService communityService
+
     )
     {
         var tokenJwt = jwt.Validate<UserToken>(UserId.userId).userId;
-        var userAuth = userService.Filter(x => x.Cpf == tokenJwt);
+        var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
+        var user = userAuth.FirstOrDefault();
 
-        return Ok();
+        var postsLinked = await postService.Filter(x => x.IdUser == user.Cpf);
+        var sla = postsLinked.Select(post => new NewPost()
+            {
+                UserId = post.IdUser,
+                Title = post.Title,
+                PostData = post.PostData,
+                CommunityId = post.IdComunity
+
+            });
+
+
+        return Ok(sla);
     }
+
+    [HttpPost ("list-posts-feed")]
+    public async Task<ActionResult> getPostFeed(
+        [FromBody] UserToken UserId,
+        [FromServices] IJwtService jwt,
+        [FromServices] IUserService userService,
+        [FromServices] IPostService postService,
+        [FromServices] ICommunityService communityService
+
+    )
+    {
+        var tokenJwt = jwt.Validate<UserToken>(UserId.userId).userId;
+        var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
+        var user = userAuth.FirstOrDefault();
+
+        var postsLinked = await postService.Filter(x => x.IdUser == user.Cpf);
+        var listPosts = postsLinked.Select(post => new NewPost()
+            {
+                UserId = post.IdUser, 
+                Title = post.Title,
+                PostData = post.PostData,
+                CommunityId = post.IdComunity
+            });
+        return Ok(listPosts);
+    }
+
+
 }

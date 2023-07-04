@@ -38,56 +38,9 @@ import { HttpErrorResponse } from '@angular/common/http';
     ]
 })
 export class FeedPageComponent {
-    myControl = new FormControl('');
-    options: string[] = [];
-    filteredOptions: Observable<string[]> | undefined;
     
-    private _filter(value: string): string[] {
-        const filterValue = value.toLowerCase();
-        return this.options.filter(option => option.toLowerCase().includes(filterValue));
-    }
-    constructor( public router : Router, private service : FeedPageService ) {
-        
-    }
-
-   ngOnInit() {
-    // const id = sessionStorage.getItem('UserId')
-
-    // if (id === null) {
-    //     console.error("sem id")
-    //     this.router.navigate(["/login"])
-    //     return
-    // }
-
-    // const userId: UserId = {
-    //     userId: id
-    // }
-
-    // console.log(id)
-
-    // this.service.communityList(userId)
-    //     .subscribe({
-    //         next: (res: CommunityList[]) => {
-    //             console.log(res)
-    //         },
-    //         error: (error: HttpErrorResponse) => {
-    //             console.log("ue vei")
-    //             console.log(error)
-    //         }
-    //     })
-        // .subscribe(res => {
-        //     res.forEach((value) =>{
-        //         this.options.push(value.title)
-        //         console.log(value.title)
-        //     })
-        // })
-
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-  }
-
+  constructor( public router : Router, private service : FeedPageService ) {  }
+  
   showForms()
   {
     this.router.navigate(['/new-community'])

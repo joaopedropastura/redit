@@ -56,7 +56,6 @@ export class SearchCommunityComponent {
         userId: id
     }
 
-    console.log(id)
 
     this.service.communityList(userId)
         .subscribe(res => {

@@ -12,8 +12,6 @@ export class FeedPageService {
   constructor(private http : HttpClient) { }
 
   communityList ( userId : UserId){
-
-    console.log(userId)
     return this.http.post<CommunityList[]>("http://localhost:5027/post/list-communities", userId)  
   }
 

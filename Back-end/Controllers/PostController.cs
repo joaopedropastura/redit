@@ -10,7 +10,7 @@ public class PostController : ControllerBase
 {
     [HttpPost("new-post")]
     public async Task<ActionResult> Add(
-        [FromServices] IPostService service,
+        [FromServices] IPostService postService,
         [FromBody] NewPost post,
         [FromServices] IJwtService jwt
     )
@@ -24,7 +24,21 @@ public class PostController : ControllerBase
             DatePublish = DateTime.Now
         };
 
-        await service.Add(newPost);
+        await postService.Add(newPost);
+        return Ok();
+    }
+
+
+    public async Task<ActionResult> getCommunities(
+        [FromServices] UserService userService,
+        [FromBody] UserToken userId,
+        [FromServices] IJwtService jwt,
+        [FromServices] ICommunityService communityService
+    )
+    {
+
+        var tokenJwt = jwt.Validate<UserToken>(userId.userId).userId;
+        var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
         return Ok();
     }
 

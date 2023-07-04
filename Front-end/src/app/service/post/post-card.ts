@@ -3,6 +3,6 @@ export interface PostCard {
     communityName : string,
     content : string,
     title : string,
-    userPhoto : ImageBitmap,
-    photoPost : ImageBitmap
+    userPhoto : string,
+    photoPost : string
 }
