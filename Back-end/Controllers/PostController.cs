@@ -28,7 +28,7 @@ public class PostController : ControllerBase
         return Ok();
     }
 
-
+    [HttpPost("get-communities")]
     public async Task<ActionResult> getCommunities(
         [FromServices] UserService userService,
         [FromBody] UserToken userId,

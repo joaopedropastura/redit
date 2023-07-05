@@ -12,6 +12,7 @@ export class PostService {
   add ( newPost : NewPost ){
     return this.http.post<CreatePostResult>("http://localhost:5027/post/new-post", newPost)
   }
+  
 
 }
 

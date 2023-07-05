@@ -35,4 +35,16 @@ public class CommunityService : ICommunityService
     {
         return await entity.Comunities.AnyAsync(exp);
     }
+
+    public async Task<List<HasResponsibility>> FilterIsMember(Expression<Func<HasResponsibility, bool>> exp)
+    {
+        var query = entity.HasResponsibilities.Where(exp);
+        return await query.ToListAsync();
+    }
+
+    public async Task AddMember(HasResponsibility hasResponsibility)
+    {
+        entity.HasResponsibilities.Add(hasResponsibility);
+        await entity.SaveChangesAsync();
+    }
 }

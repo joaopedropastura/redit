@@ -12,6 +12,10 @@ export class CommunityService {
   add( newCommunity : NewCommunity ){
     return this.http.post<CreateCommunityResult>("http://localhost:5027/forum/new-forum", newCommunity)
   }
+
+  verifyUser(){
+    // return this.http.post<>
+  }
   
 }
 

@@ -10,9 +10,13 @@ import { concatWith } from 'rxjs';
 export class CommunityPageComponent {
 
   isNotHide : boolean = false
-  
   classtag =  this.isNotHide ? "hide" : "text-description"
   btntag = this.isNotHide ? "Menos" : "Mais"
+
+  ngOnInit(){
+    
+  }
+
 
   changeVisibily()
   {

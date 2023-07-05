@@ -10,4 +10,7 @@ public interface ICommunityService
     Task Update(Comunity comunity);
     Task<bool> Exist(Expression<Func<Comunity, bool>> exp);
 
+    Task AddMember(HasResponsibility hasResponsibility);
+    Task<List<HasResponsibility>> FilterIsMember(Expression<Func<HasResponsibility, bool>> exp);
+
 }
