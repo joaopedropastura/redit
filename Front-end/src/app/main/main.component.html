@@ -1,8 +1,12 @@
-<nav id="oi">
-    <a routerLink="/login" routerLinkActive="active">login-page</a>
-    <a routerLink="/feed" routerLinkActive="active">feed-page</a>
-    <a routerLink="/new-account" routerLinkActive="active">new account</a>
-    <a routerLink="/initial" routerLinkActive="active">initialize page</a>
-</nav>
 
 <router-outlet></router-outlet>
+
+<div id="main">
+
+    <nav id="oi">
+        <a routerLink="/feed" routerLinkActive="active"><mat-icon>home</mat-icon></a>
+        <a routerLink="/login" routerLinkActive="active"><mat-icon>group</mat-icon></a>
+        <a routerLink="/new-account" routerLinkActive="active"><mat-icon>settings</mat-icon></a>
+        <a routerLink="/profile-page" routerLinkActive="active"><mat-icon>person</mat-icon></a>
+    </nav>
+</div>

@@ -8,6 +8,8 @@ import { MainComponent } from './main/main.component';
 import { NewCommunityComponent } from './new-community/new-community.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { CommunityPageComponent } from './community-page/community-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+
 
 const routes: Routes = [
   {
@@ -21,7 +23,9 @@ const routes: Routes = [
   { path: "new-account", component : NewAccountPageComponent },
   { path: "new-community", component : NewCommunityComponent },
   { path: "new-post", component : NewPostComponent },
-  { path: "community-page/:communtyName", component : CommunityPageComponent }
+  { path: "community-page/:communtyName", component : CommunityPageComponent },
+  { path: "profile-page", component : ProfilePageComponent}
+  
 ];
 
 @NgModule({

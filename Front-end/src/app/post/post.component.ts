@@ -26,10 +26,12 @@ export class PostComponent {
       title: '',
       userName: '',
       communityName: '',
-      content: '',
+      postData: '',
       userPhoto: "../../assets/img/dog.png",
       photoPost: "../../assets/img/images.png"
     } 
+
+    
 
    ngOnInit() {
     const id = sessionStorage.getItem('UserId')
@@ -50,6 +52,8 @@ export class PostComponent {
       res.forEach(element => {
         this.post.title = element.title
         this.post.userName = element.userName
+        this.post.postData = element.postData
+        this.post.communityName = element.communityName
         // this.post.communityName = 
       });
     })

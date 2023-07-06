@@ -5,7 +5,7 @@
 }
 
 #add{
-    position: absolute;
+    position: fixed;
     left: 82%;
-    top: 92%;
+    top: 85%;
 }

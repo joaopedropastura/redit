@@ -1,5 +1,17 @@
-#oi{
+nav{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    /* position: fixed; */
+
+}
+
+#main{
+    position: fixed;
+    width: 100vw;
+    top: 93%;
+    height: 7vh;
+    background-color: whitesmoke;
 }
