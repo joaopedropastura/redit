@@ -15,7 +15,7 @@ export class CommunityService {
     return this.http.post<CreateCommunityResult>("http://localhost:5027/forum/new-forum", newCommunity)
   }
 
-  verifyUser(community : CommunityPage){
+  CommunityLoad(community : CommunityPage){
     return this.http.post<VerifyUser>("http://localhost:5027/forum/verify-user", community)
   }
 
@@ -27,7 +27,9 @@ export class CommunityService {
 
 interface VerifyUser {
   inCommunity : boolean,
-  members : string
+  members : string,
+  communtyDescription : string,
+  communtyTitle : string,
 }
 
 interface CreateCommunityResult {

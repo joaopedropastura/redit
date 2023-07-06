@@ -16,8 +16,11 @@ export class CommunityPageComponent {
   isNotHide : boolean = false
   classtag =  this.isNotHide ? "hide" : "text-description"
   btntag = this.isNotHide ? "Menos" : "Mais"
-  btnText = ""
   isMember = false
+  btnText = ""
+  countMembers = ""
+  communtyDescription = ""
+  communtyTitle = ""
   
   constructor(private route: ActivatedRoute, private router: Router, private service : CommunityService) { }
   
@@ -43,12 +46,16 @@ export class CommunityPageComponent {
       this.communityPage.communityName = params['communtyName']
     })
 
-    this.service.verifyUser(this.communityPage)
+    this.service.CommunityLoad(this.communityPage)
         .subscribe(res => {
-            console.log(res.inCommunity)
-            console.log(res.members)
+            console.log(res)
+            this.countMembers = res.members 
             this.isMember = res.inCommunity 
+            this.communtyTitle = res.communtyTitle
+            this.communtyDescription = res.communtyDescription
             this.btnText = res.inCommunity ? "Membro" : "Unir-se" 
+            
+            
 
         })
   }
