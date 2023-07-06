@@ -26,7 +26,8 @@ export class CommunityService {
 }
 
 interface VerifyUser {
-  inCommunity : boolean
+  inCommunity : boolean,
+  members : string
 }
 
 interface CreateCommunityResult {

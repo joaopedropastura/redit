@@ -27,7 +27,6 @@ export class CommunityPageComponent {
     communityName : '',
   }
 
-
   ngOnInit(){
 
     const id = sessionStorage.getItem('UserId')
@@ -47,6 +46,7 @@ export class CommunityPageComponent {
     this.service.verifyUser(this.communityPage)
         .subscribe(res => {
             console.log(res.inCommunity)
+            console.log(res.members)
             this.isMember = res.inCommunity 
             this.btnText = res.inCommunity ? "Membro" : "Unir-se" 
 
