@@ -9,28 +9,33 @@ import { NewCommunityComponent } from './new-community/new-community.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { CommunityPageComponent } from './community-page/community-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { SearchCommunityComponent } from './search-community/search-community.component';
 
 const routes: Routes = [
   {
     path: '', component : MainComponent,
     children: [
-      { path : 'feed', component : FeedPageComponent}
+      { path : 'feed', component : FeedPageComponent},
+      { path: "profile-page", component : ProfilePageComponent},
+      { path: "new-account", component : NewAccountPageComponent },
+      { path: "new-community", component : NewCommunityComponent },
+      { path: "community-page/:communtyName", component : CommunityPageComponent },
+      { path: "new-post", component : NewPostComponent },
+      { path: "search-community", component : SearchCommunityComponent },
     ]
   },
   { path: "login", component: LoginPageComponent },
   { path: "initial", component: InitPageComponent },
-  { path: "new-account", component : NewAccountPageComponent },
-  { path: "new-community", component : NewCommunityComponent },
-  { path: "new-post", component : NewPostComponent },
-  { path: "community-page/:communtyName", component : CommunityPageComponent },
-  { path: "profile-page", component : ProfilePageComponent}
   
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [
+    RouterModule,
+    MatTabsModule
+  ],
   
 })
 export class AppRoutingModule { }

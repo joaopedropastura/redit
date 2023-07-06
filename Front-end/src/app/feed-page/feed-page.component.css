@@ -9,3 +9,21 @@
     left: 82%;
     top: 85%;
 }
+
+#logo{
+    font-family: Monospace;
+    font-size: 2rem;
+}
+
+#header{
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 1vh;
+
+    height: 4vh;
+    z-index: 2;
+    top: 0%;
+    background-color: lightblue;
+}

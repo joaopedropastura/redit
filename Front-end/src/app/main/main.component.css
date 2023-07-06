@@ -4,6 +4,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     height: 100%;
+    background-color: whitesmoke;
     /* position: fixed; */
 
 }
@@ -14,4 +15,5 @@ nav{
     top: 93%;
     height: 7vh;
     background-color: whitesmoke;
+    z-index: 1;
 }

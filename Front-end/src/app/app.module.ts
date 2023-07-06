@@ -27,7 +27,7 @@ import { NewPostComponent } from './new-post/new-post.component';
 import { SearchCommunityComponent } from './search-community/search-community.component';
 import { PostComponent } from './post/post.component';
 import { CommunityPageComponent } from './community-page/community-page.component';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -35,11 +35,12 @@ import { CommunityPageComponent } from './community-page/community-page.componen
     NavComponent,
     PasswordComponent,
     InitPageComponent,
-    MainComponent,
     ProfilePageComponent,
     CommunityPageComponent,
+    MainComponent,
   ],
   imports: [
+    MatTabsModule,
     PostComponent,
     SearchCommunityComponent,
     NewPostComponent,
@@ -60,7 +61,8 @@ import { CommunityPageComponent } from './community-page/community-page.componen
     AsyncPipe,
     MatIconModule,
     HttpClientModule,
-    MatMenuModule
+    MatMenuModule,
+    
 
   ],
   providers: [],
