@@ -53,8 +53,7 @@ export class SearchCommunityComponent {
         this.router.navigate(["/login"])
         return
     }
-
-
+    
     console.log(this.filteredOptions)
     if ( this.myControl.value != "")
     {
