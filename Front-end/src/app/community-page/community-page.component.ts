@@ -55,8 +55,6 @@ export class CommunityPageComponent {
             this.communtyDescription = res.communtyDescription
             this.btnText = res.inCommunity ? "Membro" : "Unir-se" 
             
-            
-
         })
   }
 

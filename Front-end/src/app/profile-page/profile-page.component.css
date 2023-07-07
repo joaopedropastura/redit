@@ -47,7 +47,7 @@ p{
 
 #more-information{
     border: none;
-    color: blue;
+    color: black;
 }
 
 #backgroundCommunity{
@@ -71,6 +71,7 @@ p{
     width: 100vw;
     display: flex;
     justify-content: center;
+    gap: 1vh
 }
 
 #join{
@@ -85,3 +86,8 @@ p{
     width: 100%;
 }
 
+#idPosts{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}

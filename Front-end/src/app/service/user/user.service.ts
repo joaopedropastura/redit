@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NewUser } from './new-user';
 import { LoginUserResult } from './login-user';
+import { UserProfile } from './profile-user';
+import { UserId } from './userId';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,10 @@ export class UserService {
 
   login(LoginUserResult : LoginUserResult){
       return this.http.post<LoginResult>("http://localhost:5027/user/login", LoginUserResult)
+  }
+
+  userInfo(userId: UserId){
+    return this.http.post<UserProfile>("http://localhost:5027/user/profile-page", userId)
   }
 }
 

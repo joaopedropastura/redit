@@ -8,9 +8,11 @@
       </mat-card-header>
       <img mat-card-image src="{{post.photoPost}}" alt="Photo of a Shiba Inu">
       <mat-card-content>
-        <p>
+        <p id={{classtag}}>
           {{post.postData}}
         </p>
+        <button id="more-information" (click)="changeVisibily()">{{btntag}}</button>
+
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>LIKE</button>
