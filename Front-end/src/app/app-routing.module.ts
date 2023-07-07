@@ -18,13 +18,13 @@ const routes: Routes = [
     children: [
       { path : 'feed', component : FeedPageComponent},
       { path: "profile-page", component : ProfilePageComponent},
-      { path: "new-account", component : NewAccountPageComponent },
       { path: "new-community", component : NewCommunityComponent },
       { path: "community-page/:communtyName", component : CommunityPageComponent },
       { path: "new-post", component : NewPostComponent },
       { path: "search-community", component : SearchCommunityComponent },
     ]
   },
+  { path: "new-account", component : NewAccountPageComponent },
   { path: "login", component: LoginPageComponent },
   { path: "initial", component: InitPageComponent },
   

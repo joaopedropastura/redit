@@ -1,4 +1,5 @@
 #main{
+    margin-top: 7vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,13 +18,18 @@
 
 #header{
     position: fixed;
-    width: 100vw;
+    width: 96vw;
     display: flex;
     align-items: center;
-    padding: 1vh;
-
+    padding:  1vw 2vh;
+    gap: 1vh;
     height: 4vh;
     z-index: 2;
     top: 0%;
     background-color: lightblue;
+}
+
+img{
+    height: 100%;
+    width: fit-content;
 }

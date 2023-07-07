@@ -54,6 +54,7 @@ export class PostComponent {
         this.post.userName = element.userName
         this.post.postData = element.postData
         this.post.communityName = element.communityName
+
         // this.post.communityName = 
       });
     })

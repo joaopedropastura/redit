@@ -62,11 +62,10 @@ export class SearchCommunityComponent {
     const userId: UserId = {
         userId: id
     }
-
-
     this.service.communityList(userId)
         .subscribe(res => {
             res.forEach((value) =>{
+              console.log(value)
                 this.options.push(value.title)
             })
         })
@@ -83,11 +82,13 @@ export class SearchCommunityComponent {
   }
   private _filter(value: string): string[] {
 
-    const filterValue = value.toLowerCase();
+    const filterValue = value
     if (this.options.includes(filterValue))
     {
-      this.router.navigate(["/community-page", filterValue] )
+      console.log(filterValue)
+      this.router.navigate( ["/community-page", filterValue] )
     }
+    
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   
   }
