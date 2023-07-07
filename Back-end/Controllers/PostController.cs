@@ -11,8 +11,8 @@ public class PostController : ControllerBase
     [HttpPost("new-post")]
     public async Task<ActionResult> Add(
         [FromServices] IPostService postService,
-        [FromBody] NewPost post,
-        [FromServices] IJwtService jwt
+        [FromServices] IJwtService jwt,
+        [FromBody] NewPost post
     )
     {
         Post newPost = new Post()
@@ -24,23 +24,39 @@ public class PostController : ControllerBase
             DatePublish = DateTime.Now
         };
 
+
         await postService.Add(newPost);
         return Ok();
     }
 
-    [HttpPost("get-communities")]
-    public async Task<ActionResult> getCommunities(
-        [FromServices] UserService userService,
-        [FromBody] UserToken userId,
+    
+
+    [HttpPost ("list-posts")]
+    public async Task<ActionResult> getPosts(
+        [FromBody] UserToken UserId,
         [FromServices] IJwtService jwt,
+        [FromServices] IUserService userService,
+        [FromServices] IPostService postService,
         [FromServices] ICommunityService communityService
+
     )
     {
-
-        var tokenJwt = jwt.Validate<UserToken>(userId.userId).userId;
+        var tokenJwt = jwt.Validate<UserToken>(UserId.userId).userId;
         var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
-        return Ok();
-    }
+        var user = userAuth.FirstOrDefault();
+        var postsLinked = await postService.Filter(x => x.IdUser == user.Cpf);
+        var community =  await communityService.Filter(x => x.Id == postsLinked.FirstOrDefault().IdComunity);
+        var communityName = community.FirstOrDefault();
 
-    
+        var sla = postsLinked.Select(post => new PostItem()
+            {
+                Title = post.Title,
+                PostData = post.PostData,
+                CommunityName = communityName.Title,
+                UserName = user.Username
+            });
+
+
+        return Ok(sla);
+    }
 }

@@ -35,7 +35,7 @@ public class UserController : ControllerBase
             Borndate = user.DataNasc,
             Email = user.Email
         };
-
+        
         await service.Add(cadastro);
         return Ok();
     }

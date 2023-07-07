@@ -1,6 +1,7 @@
-using Back_end.Model;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+namespace Back_end.Controllers;
+using Back_end.Model;
 using Security.Jwt;
 
 [ApiController]
@@ -29,12 +30,14 @@ public class CommunityController : ControllerBase
         if (CommunityExist)
             return Ok(new {Message = "Comunidade ja existente"});
                     
+
+        
         await service.Add(newComunity);
         return Ok( new {Message = "Comunidade criada com sucesso!"});
     }
 
     [HttpPost("verify-user")]
-    public async Task<ActionResult> IsMember(
+    public async Task<ActionResult> CommunityLoad(
         [FromBody] IsMember pageData,
         [FromServices] IJwtService jwtService,
         [FromServices] IUserService userService,
@@ -59,9 +62,15 @@ public class CommunityController : ControllerBase
         
         return Ok(new
         {
-            InCommunity = middleTable.Count() > 0
+            InCommunity = middleTable.Count() > 0,
+            Members = middleTable.Count(),
+            CommuntyTitle = comunity.Title,
+            CommuntyDescription = comunity.Description
+            // communtyPosts = comunity.Posts,
+
         });
     }
+
      [HttpPost("add-user")]
     public async Task<ActionResult> AddMember(
         [FromBody] IsMember pageData,
@@ -74,10 +83,32 @@ public class CommunityController : ControllerBase
         var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
         var user = userAuth.FirstOrDefault();
         var communityName = await communitySerice.Filter(x => x.Title == pageData.CommunityName);
+        var communityObj = communityName.FirstOrDefault();        
 
-        var middleTable = await communitySerice.FilterIsMember(x => x.IdComunity == communityName[0].Id);
+        var newMember = new HasResponsibility()
+        {
+            IdComunity = communityObj.Id,
+            IdUser = user.Cpf,
+            IdResponsibility = 1
+        };
+
+        await communitySerice.AddMember(newMember);
         
-        System.Console.WriteLine(middleTable[0]);
-        return Ok(); 
+        return Ok( new {Message = "novo membro adicionado com sucesso"}); 
     }
+
+    [HttpPost("get-communities")]
+    public async Task<ActionResult> getCommunities(
+        [FromServices] UserService userService,
+        [FromBody] UserToken userId,
+        [FromServices] IJwtService jwt,
+        [FromServices] ICommunityService communityService
+    )
+    {
+
+        var tokenJwt = jwt.Validate<UserToken>(userId.userId).userId;
+        var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
+        return Ok();
+    }
+
 }

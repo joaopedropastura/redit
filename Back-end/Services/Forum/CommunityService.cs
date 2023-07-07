@@ -47,4 +47,15 @@ public class CommunityService : ICommunityService
         entity.HasResponsibilities.Add(hasResponsibility);
         await entity.SaveChangesAsync();
     }
+
+    public async Task AddResponsibility(Responsibility responsibility)
+    {
+        entity.Responsibilities.Add(responsibility);
+        await entity.SaveChangesAsync();
+    }
+
+    public async Task<int> CountMembers(HasResponsibility hasResponsibility)
+    {
+        return await entity.HasResponsibilities.CountAsync();
+    }
 }

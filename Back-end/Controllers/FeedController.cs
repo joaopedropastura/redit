@@ -24,34 +24,6 @@ public class FeedController : ControllerBase
         return Ok(listCommunity);
     }
 
-    [HttpPost ("list-posts")]
-    public async Task<ActionResult> getPosts(
-        [FromBody] UserToken UserId,
-        [FromServices] IJwtService jwt,
-        [FromServices] IUserService userService,
-        [FromServices] IPostService postService,
-        [FromServices] ICommunityService communityService
-
-    )
-    {
-        var tokenJwt = jwt.Validate<UserToken>(UserId.userId).userId;
-        var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
-        var user = userAuth.FirstOrDefault();
-
-        var postsLinked = await postService.Filter(x => x.IdUser == user.Cpf);
-        var sla = postsLinked.Select(post => new NewPost()
-            {
-                UserId = post.IdUser,
-                Title = post.Title,
-                PostData = post.PostData,
-                CommunityId = post.IdComunity
-
-            });
-
-
-        return Ok(sla);
-    }
-
     [HttpPost ("list-posts-feed")]
     public async Task<ActionResult> getPostFeed(
         [FromBody] UserToken UserId,

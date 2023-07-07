@@ -4,5 +4,4 @@ public class NewPost
     public string ? Title { get; set; }
     public string ? PostData { get; set; }
     public int ? CommunityId  { get; set; }
-    
 }
