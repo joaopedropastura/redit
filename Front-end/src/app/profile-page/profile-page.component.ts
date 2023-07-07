@@ -8,7 +8,10 @@ import { Component } from '@angular/core';
 export class ProfilePageComponent {
   box = document.getElementById('text-description');
   
-  
+  ngOnInit(){
+    
+  }
+
   isNotHide : boolean = false
   classtag =  this.isNotHide ? "hide" : "text-description"
   // selected = document.querySelector('#text-description')

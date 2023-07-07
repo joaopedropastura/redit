@@ -6,4 +6,5 @@ export interface NewUser{
     password : string;
     bornDate : Date;
     AssignDate: Date;
+    userPhoto : string;
 }

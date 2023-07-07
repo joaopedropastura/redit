@@ -57,13 +57,14 @@ export class NewAccountPageComponent {
   hide = true;
   userRegister : NewUser =
   {
-    password : "",
-    userName : "",
-    email : "",
-    name : "",
-    cpf : "",
-    bornDate : new Date(),
-    AssignDate : new Date()
+    password: "",
+    userName: "",
+    email: "",
+    name: "",
+    cpf: "",
+    bornDate: new Date(),
+    AssignDate: new Date(),
+    userPhoto: ''
   }
   
   add(){

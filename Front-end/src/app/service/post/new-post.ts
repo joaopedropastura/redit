@@ -1,6 +1,6 @@
 export interface NewPost{
-    jwt : string,
+    userId : string,
     title : string,
     postData : string,
-    idCommunity : number,
+    communityId : number,
 }

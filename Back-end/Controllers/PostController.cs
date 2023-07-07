@@ -45,7 +45,10 @@ public class PostController : ControllerBase
         var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
         var user = userAuth.FirstOrDefault();
         var postsLinked = await postService.Filter(x => x.IdUser == user.Cpf);
-        var community =  await communityService.Filter(x => x.Id == postsLinked.FirstOrDefault().IdComunity);
+        var postsLink = postsLinked.FirstOrDefault();
+        if (postsLink is null)
+            return Ok( new { Message = "nenhum post"} );
+        var community =  await communityService.Filter(x => x.Id == postsLink.IdComunity);
         var communityName = community.FirstOrDefault();
 
         var sla = postsLinked.Select(post => new PostItem()

@@ -53,10 +53,10 @@ export class NewPostComponent {
   filteredOptions: Observable<string[]> | undefined;
 
   PostRegister: NewPost = {
-    jwt: '',
+    userId: '',
     title: '',
     postData: '',
-    idCommunity: 0
+    communityId: 0
   }
   
   constructor(private service: PostService, public router: Router, private service2: FeedPageService) {
@@ -72,7 +72,7 @@ export class NewPostComponent {
       this.router.navigate(["/login"])
       return
     }
-    this.PostRegister.jwt = id
+    this.PostRegister.userId = id
 
     const userId: UserId = {
       userId: id
@@ -104,7 +104,7 @@ export class NewPostComponent {
     {
       console.log(filterValue)
       const temp = this.communityList.filter(x => x.title == filterValue)[0].id
-      this.PostRegister.idCommunity = temp
+      this.PostRegister.communityId = temp
     }
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
 
