@@ -4,6 +4,7 @@ import { Subscription, concatWith } from 'rxjs';
 import { CommunityService } from '../service/community/community.service';
 import { UserId } from '../service/user/userId';
 import { CommunityPage } from '../service/community/community-page';
+import { CommunityData } from '../service/community/community-data';
 
 @Component({
   selector: 'app-community-page',
@@ -30,6 +31,15 @@ export class CommunityPageComponent {
     communityName : '',
   }
 
+  communityData : CommunityData = {
+    communityName: '',
+    userNameOwner: '',
+    inCommunity: false,
+    description: '',
+    members: 0,
+    postList: []
+  }
+
   ngOnInit(){
 
     const id = sessionStorage.getItem('UserId')
@@ -48,12 +58,14 @@ export class CommunityPageComponent {
 
     this.service.CommunityLoad(this.communityPage)
         .subscribe(res => {
-            console.log(res)
-            this.countMembers = res.members 
-            this.isMember = res.inCommunity 
-            this.communtyTitle = res.communtyTitle
-            this.communtyDescription = res.communtyDescription
-            this.btnText = res.inCommunity ? "Membro" : "Unir-se" 
+          this.communityData.communityName = res.communityName
+          this.communityData.members = res.members 
+          this.communityData.inCommunity = res.inCommunity 
+          this.communityData.userNameOwner = res.userNameOwner
+          this.communityData.description = res.description
+          this.communityData.postList = res.postList
+          this.btnText = res.inCommunity ? "Membro" : "Unir-se" 
+          console.log(this.communityData.postList)
             
         })
   }

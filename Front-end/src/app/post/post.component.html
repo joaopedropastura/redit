@@ -6,8 +6,9 @@
         <mat-card-title>{{post.userName}}</mat-card-title>
         <mat-card-subtitle>{{post.communityName}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="{{post.photoPost}}" alt="Photo of a Shiba Inu">
+      <!-- <img mat-card-image src="{{post.photoPost}}" alt="Photo of a Shiba Inu"> -->
       <mat-card-content>
+        <h3>{{post.title}}</h3>
         <p id={{classtag}}>
           {{post.postData}}
         </p>

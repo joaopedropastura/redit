@@ -18,6 +18,9 @@ export class FeedPageService {
   postsLists ( userId : UserId){
     return this.http.post<PostCard[]>("http://localhost:5027/post/list-posts", userId)
   }
+  feedPostsLists ( userId : UserId){
+    return this.http.post<PostCard[]>("http://localhost:5027/post/feed-list-posts", userId)
+  }
 }
 
 

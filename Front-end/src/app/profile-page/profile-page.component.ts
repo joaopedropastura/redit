@@ -43,6 +43,7 @@ export class ProfilePageComponent {
       this.data.assignDate = res.assignDate
       this.data.bornDate = res.bornDate
       this.data.postList = res.postList
+      console.log(res)
     })
 
   }

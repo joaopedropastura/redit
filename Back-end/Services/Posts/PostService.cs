@@ -18,7 +18,10 @@ public class PostService : IPostService
     }
     public async Task<List<Post>> Filter(Expression<Func<Post, bool>> exp)
     {
-        var query = entity.Posts.Where(exp);
+        var query = entity.Posts
+        .Include(p => p.IdUserNavigation)
+        .Include(p => p.IdComunityNavigation)
+        .Where(exp);
         return await query.ToListAsync();
     }
 

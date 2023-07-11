@@ -62,4 +62,35 @@ public class PostController : ControllerBase
 
         return Ok(sla);
     }
+        [HttpPost ("feed-list-posts")]
+    public async Task<ActionResult> getPostsFeed(
+        [FromBody] UserToken UserId,
+        [FromServices] IJwtService jwt,
+        [FromServices] IUserService userService,
+        [FromServices] IPostService postService,
+        [FromServices] ICommunityService communityService
+
+    )
+    {
+        var tokenJwt = jwt.Validate<UserToken>(UserId.userId).userId;
+        var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
+        var user = userAuth.FirstOrDefault();
+        var postsLinked = await postService.Filter(x => x.IdUser == user.Cpf);
+        var postsLink = postsLinked.FirstOrDefault();
+        if (postsLink is null)
+            return Ok( new { Message = "nenhum post"} );
+        var community =  await communityService.Filter(x => x.Id == postsLink.IdComunity);
+        var communityName = community.FirstOrDefault();
+
+        var sla = postsLinked.Select(post => new PostItem()
+            {
+                Title = post.Title,
+                PostData = post.PostData,
+                CommunityName = communityName.Title,
+                UserName = user.Username
+            });
+
+
+        return Ok(sla);
+    }
 }

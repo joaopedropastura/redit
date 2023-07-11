@@ -5,14 +5,14 @@
                 <img src="../../assets/img/images.png" alt="" id="communityPhoto">
             </div>
             <div id="userNames">    
-                <span id="name">{{communtyTitle}}</span>
-                <span id="userName">dogMal2005</span>
+                <span id="name">{{communityData.communityName}}</span>
+                <span id="userName">{{communityData.userNameOwner}}</span>
             </div>
             <p id={{classtag}}>
-                {{communtyDescription}}
+                {{communityData.description}}
             </p>
             <button id="more-information" (click)="changeVisibily()">{{btntag}}</button>
-            <div id="followers">{{countMembers}} membros</div>
+            <div id="followers">{{communityData.members}} membros</div>
             <div id="join">
                 <button id="joinbtn" mat-flat-button color="primary" (click)="subscribeBtn()">{{btnText}}</button>
             </div>
@@ -20,8 +20,9 @@
     </div>
     <div id="idPosts">
         <div id="posts">
-            <app-post></app-post>   
-            
+           <div id="posts" *ngFor="let elem of communityData.postList">
+                <app-post [post]="elem"></app-post>   
+            </div>
         </div>
     </div>
 </div>

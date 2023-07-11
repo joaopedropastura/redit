@@ -41,34 +41,46 @@ public class CommunityController : ControllerBase
         [FromBody] IsMember pageData,
         [FromServices] IJwtService jwtService,
         [FromServices] IUserService userService,
-        [FromServices] ICommunityService communitySerice
+        [FromServices] ICommunityService communitySerice,
+        [FromServices] IPostService postService
     )
     {
         var validation = jwtService.Validate<IsMember>(pageData.userId);
         if (validation is null)
             return Forbid();
+
         var cpf = validation.userId;
-        
         var communities = await communitySerice.Filter(x => x.Title == pageData.CommunityName);
         var comunity = communities.FirstOrDefault();
 
         if (comunity is null)
             return NotFound("Comunidade inexistente");
+        
+        var posts = await postService.Filter(x => x.IdComunity == comunity.Id);
+        
+        var postItemList = posts.Select(p => new PostItem {
+            UserName = p.IdUserNavigation.Username,
+            CommunityName = p.IdComunityNavigation.Title,
+            Title = p.Title,
+            PostData = p.PostData
+        }).ToList();
 
         var middleTable = await communitySerice.FilterIsMember(
             x => x.IdComunity == comunity.Id && 
             x.IdUser == cpf
         );
-        
-        return Ok(new
-        {
-            InCommunity = middleTable.Count() > 0,
-            Members = middleTable.Count(),
-            CommuntyTitle = comunity.Title,
-            CommuntyDescription = comunity.Description
-            // communtyPosts = comunity.Posts,
 
-        });
+        CommunityData data = new CommunityData()
+        {
+            InCommunity = middleTable.Count() > 0 ? true : false,
+            Description = comunity.Description,
+            CommunityName = comunity.Title,
+            Members = middleTable.Count(),
+            PostList = postItemList,
+            UserNameOwner = comunity.CreatorNavigation.Username
+        };
+        
+        return Ok(data);
     }
 
      [HttpPost("add-user")]
@@ -110,5 +122,4 @@ public class CommunityController : ControllerBase
         var userAuth = await userService.Filter(x => x.Cpf == tokenJwt);
         return Ok();
     }
-
 }

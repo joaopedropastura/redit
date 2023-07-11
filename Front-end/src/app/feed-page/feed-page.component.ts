@@ -1,5 +1,3 @@
-import { MatFormFieldControl } from '@angular/material/form-field';
-import { Observable, concatWith, map, startWith } from 'rxjs';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgFor, AsyncPipe} from '@angular/common';
@@ -14,8 +12,6 @@ import { SearchCommunityComponent } from "../search-community/search-community.c
 import { PostComponent } from "../post/post.component";
 import { FeedPageService } from '../service/feed-page.service';
 import { UserId } from '../service/user/userId';
-import { CommunityList } from '../service/community/communityList';
-import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -38,7 +34,22 @@ import { HttpErrorResponse } from '@angular/common/http';
     ]
 })
 export class FeedPageComponent {
-    
+  ngOnInit() {
+    const id = sessionStorage.getItem('UserId')
+
+    if (id === null) {
+        console.error("sem id")
+        this.router.navigate(["/login"])
+        return
+    }
+    const userId: UserId = {
+      userId: id
+  }
+    this.service.feedPostsLists(userId)
+      .subscribe(res => {
+        console.log(res)
+      })
+  }
   constructor( public router : Router, private service : FeedPageService ) {  }
   
   showForms()
@@ -50,5 +61,4 @@ export class FeedPageComponent {
   {
     this.router.navigate(['/new-post'])
   }
-  
 }

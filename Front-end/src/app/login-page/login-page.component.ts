@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgIf } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { async } from 'rxjs';
 
 
 @Component({
@@ -49,13 +50,13 @@ export class LoginPageComponent {
 
   login(){
     this.service.login(this.userData)
-
-    
-      .subscribe(res => {
+    .subscribe(res => {
         sessionStorage.setItem("UserId", res.value)
+        this.router.navigate(['/feed'])
+        window.location.reload();
+        console.log(sessionStorage.getItem("UserId"))
+
       })
-      this.router.navigate(['/feed'])
-      console.log(sessionStorage.getItem("UserId"))
   }
 
 }

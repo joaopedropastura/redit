@@ -95,6 +95,7 @@ export class NewPostComponent {
         console.log(res)
       })
     console.log(this.PostRegister)
+    this.router.navigate(['/feed'])
   }
 
   private _filter(value: string): string[] {
